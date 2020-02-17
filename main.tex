@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{subfiles}
+\usepackage{lscape}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\title{Dokumentation WEBLAB Projekt Travelblog}
+\author{Patrick Marty (tamarty)}
+\date{HS19}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\graphicspath{{images/}{../images/}}
+
+\begin{document}
+\maketitle
+
+\vspace{2cm}
+\section{Einführung}\label{einfuhrung}
+\subfile{Einfuhrung/einfuhrung}
+\newpage
+
+\section{Architektur}\label{architektur}
+\subfile{Architektur/architektur}
+
+\section{Backend}\label{backend}
+\subfile{Backend/backend}
+
+\section{Frontend}\label{frontend}
+
+\section{Fazit \& Reflexion}\label{fazit}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\newpage
+
+\begin{landscape}
+\section{Arbeitsjournal}\label{arbeitsjournal}
+\subfile{arbeitsjournal}
+\end{landscape}
+
+\end{document}
