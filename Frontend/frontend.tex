@@ -17,7 +17,7 @@ Der Aufbau der Applikation ist sehr einfach gehalten. Folgende Komponenten komme
 Es können mittels Formulare Reisen oder Blogeinträge erstllt werden. Bei den Blogeinträgen kann man auch optional ein Bild hinzugefügt werden. Die Funktionalität Bildupload wird mit der 3rd Party Library ng2-file-upload realisiert. Die Blogeinträge respektive die Reiseinformationen werden als JSON Objekt mittels POST-Methode dem Server zur Persisitierung übergeben.
 
 \subsection{Authentifizierung / Authorisierung}
-Die Authentifizierung wird mittels Benutzername und Passwort Eingabe durchgeführt. Das Passwort wird direkt in einen SHA-256 Hash umgewandelt, dass dieses sicher zum Server übermittelt werden kann. Bei erfolgreicher Authentifizierung durch den Server wird der Benutzername, seine Rolle und das Token an die Applikation zurückgegeben. Mittels der Rolle (creator, visitor) kann der Benutzer nun auf unterschiedliche Funktionen zugreiffen.\\
+Die Authentifizierung wird mittels Benutzername und Passwort Eingabe durchgeführt. Das Passwort wird direkt in einen SHA-256 Hash umgewandelt, damit dieses sicher zum Server übermittelt werden kann. Bei erfolgreicher Authentifizierung durch den Server wird der Benutzername, seine Rolle und das Token an die Applikation zurückgegeben. Mittels der Rolle (creator, visitor) kann der Benutzer nun auf unterschiedliche Funktionen zugreiffen.\\
 
 \textbf{Creator:}\\
 - Reisen erstellen und löschen \\

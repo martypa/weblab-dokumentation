@@ -9,10 +9,10 @@ Der Server der Travelblog Applikation erfüllt folgende Aufgaben:
     \item Peristierung von Blogeinträgen
     \item Bereitstellung der Applikation
 \end{itemize}
-Wie bereits im Kapitel \ref{architektur} beschrieben, kommt als Backend ein NodeJS Platform zum Einsatz mit dem express.js Framework. Weiters wird das REST- Paradigma verwendet um Anfragen vom Client beantworten zu können. Für die Authentifizierung der User kommt ein einfaches User/ Passwort abfrage zum Einsatz. Für die Authorisierung wird dann ein JSON Web Token verwendet. Zur Persistierung der Daten kommt eine MongoDB zum Einsatz.
+Wie bereits im Kapitel \ref{architektur} beschrieben, kommt als Backend ein NodeJS Platform zum Einsatz mit dem express.js Framework. Weiters wird das REST- Paradigma verwendet um Anfragen vom Client beantworten zu können. Für die Authentifizierung der User kommt ein einfaches User/ Passwort abfrage zum Einsatz. Für die Authorisierung wird dann ein JSON Web Token verwendet. Zur Persistierung der Daten wird eine MongoDB eingesetzt.
 
 \subsection{Express.js}
-Als Serverseitiges Framework kommt express.js zum Einsatz. Express.js wurde ausgwählt da es im Unterricht schon behandelt wurde und es eine gute Integration zum Nodejs bietet. Der Aufbau ist sehr einfach gehalten, da nur eine REST Funktionalität und die Anbindung an die MongoDB Datenbank benötigt wird. Die Backendapplikation besteht aus folgenden Teilen:
+ Express.js wurde ausgwählt da es im Unterricht schon behandelt wurde und es eine gute Integration zum Nodejs bietet. Der Aufbau ist sehr einfach gehalten, da nur eine REST Funktionalität und die Anbindung an die MongoDB Datenbank benötigt wird. Die Backendapplikation besteht aus folgenden Teilen:
 \begin{itemize}
     \item bin/www: Einstiegspunkt der Backendapplikation
     \item app.js: Konfigurationen express.js
@@ -21,7 +21,7 @@ Als Serverseitiges Framework kommt express.js zum Einsatz. Express.js wurde ausg
 \end{itemize}
 
 \subsection{REST-API}
-Zur Beschreibung der Kommunikationspunkte im Backend kommt die REST- Architektur zum Einsatz. Wie in der Tabelle ersichtlich, werden vier GET- Methoden und drei POST- Methoden zur Verfügung gestellt. Untenstehend werden die jeweiligen Methoden kurz beschrieben.\\
+Zur Beschreibung der Kommunikationspunkte im Backend wird die REST- Architektur verwendet. Wie in der Tabelle ersichtlich, werden vier GET- Methoden und drei POST- Methoden zur Verfügung gestellt. Untenstehend werden die jeweiligen Methoden kurz beschrieben.\\
 
 \begin{tabular}{ p{4.5cm} | p{9.5cm}}
  \textbf{Methode} & \textbf{Beschreibung}\\
@@ -44,6 +44,6 @@ Die Travelblog Applikation ist Multiuser fähig. Dadurch ist es möglich verschi
 Die Authentifizierung wird mittels Benutzername / Passwort realisiert. Zur sicheren Übermittlung wird das Passwort im Client gehascht (SHA-256). Anschliessend wird der Benutzername und das Passwort zum Server zur Authentifizierung übermittelt. Dieser überprüft den Benutzername und Passwort mittels der gespeicherten Accounts in der MongoDB Datenbank. Wenn die Authentifizierung erfolgreich ist, wird ein JWT (JSON Web Token) ausgestellt und dem Client für weitere Authorisierungen zur verfügung gestellt. Für creator und visitor werden unterschiedliche Token ausgestellt. So kann gewährleistet werden, dass nur creator POST- Methoden ausführen dürfen.
 
 \subsection{MongoDB}
-Zur Persistierung des Travelblogs kommt die NoSQL Datenbank MongoDB zum Einsatz. Prinzipiell wäre auch ein Einsatz einer SQL Datenbank möglich gewesen, da es sich bei den Blogeinträgen um strukturierte Daten handeln. Der Entscheid für die MongoDB Datenbank ist aufgrund ihrer einfachen Integration in den Nodejs Server und die Möglichkeit kostenlos eine Cloud- Datenbank zu verwenden. Dies bietet den Vorteil, dass man direkt die MongoDB als IaaS (Infrastructe as a Service) verwenden kann.\\
+Persisiert werden die Daten mittels der NoSQL Datenbank MongoDB. Prinzipiell wäre auch ein Einsatz einer SQL Datenbank möglich gewesen, da es sich bei den Blogeinträgen um strukturierte Daten handeln. Der Entscheid für die MongoDB Datenbank ist aufgrund ihrer einfachen Integration in den Nodejs Server und die Möglichkeit kostenlos eine Cloud- Datenbank zu verwenden. Dies bietet den Vorteil, dass man direkt die MongoDB als IaaS (Infrastructe as a Service) verwenden kann.\\
 Die Daten werden gesamthaft in einer Datenbank namens travelblog gespeichert. Pro Reise (Travel) wird dann innerhalb der Datenbank eine separate Collection erstellt. Diese wird beim Aufruf der REST- Schnittstelle POST /upload/createTravel erstellt. Jeder Blogeintrag und der Header wird jeweils in einem eigenen Document gespeichert. Anhand dieses Datenbankmodells können sehr einfache CRUD- Operationen durchgeführt werden. Zugegriffen wird mittels dem MongoDB Client über HTTPS.
 \end{document}
